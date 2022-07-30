@@ -73,7 +73,6 @@ keyboardLetters.map((letters) => {
       .then((data) => {
         secretWord = data[0].toLocaleLowerCase().split("");
         renderWord();
-        console.log(secretWord)
       });
 
   };
