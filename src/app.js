@@ -56,6 +56,7 @@ keyboardLetters.map((letters) => {
   let secretWord = [];
   let playerWord = [];
   let counterPlayer = 0;
+  let game = true;
 
   const renderWord = () => {
     secretWord.forEach(letter => {
@@ -70,8 +71,9 @@ keyboardLetters.map((letters) => {
     fetch("https://random-word-api.herokuapp.com/word?lang=es")
       .then((response) => response.json())
       .then((data) => {
-        secretWord = data[0].split("");
+        secretWord = data[0].toLocaleLowerCase().split("");
         renderWord();
+        console.log(secretWord)
       });
 
   };
@@ -81,11 +83,12 @@ keyboardLetters.map((letters) => {
     word.innerHTML = "";
     playerWord = [];
     counterPlayer = 0;
+    game = true;
     ahorcado.setAttribute('SRC', ahorcadoDraw[0])
   }
   
   const pressLetter = () => {
-    if (secretWord.length != 0) {
+    if (secretWord.length != 0 && game == true) {
         const evento = event.target.id;
         checkKey(evento);
     } else {
@@ -98,10 +101,17 @@ keyboardLetters.map((letters) => {
     renderWord();
     playerWord = [];
     counterPlayer = 0;
+    game = true;
     ahorcado.setAttribute('SRC', ahorcadoDraw[0])
   }
 
-  addEventListener('keyup', event => checkKey(event.key));
+  addEventListener('keyup', event => {
+    if (secretWord.length != 0 && game == true ) {
+      checkKey(event.key)
+    } else {
+        alert("Selecciona new word para iniciar")
+    }
+  });
 
   const checkKey = (evento) => {
     if ( secretWord.includes(evento)) {
@@ -120,5 +130,6 @@ keyboardLetters.map((letters) => {
         ahorcado.setAttribute('SRC', ahorcadoDraw[counterPlayer]);
     } else {
         alert("Perdiste");
+        game = false
     }
   }
