@@ -1,0 +1,100 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    background-color: rgb(21, 11, 44);
+    color: aliceblue;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2rem;
+}
+.ahorcado-game {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.image {
+    width: 90%;
+    max-width: 800px;
+    transition: .3s;
+}
+
+.image-container {
+    width: 100%;
+    object-fit: cover;
+    background-color: bisque;
+}
+
+.keyboard {
+    width: 90%;
+    max-width: 800px;
+}
+
+ul {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    margin: 2px;
+}
+
+button {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 4px;
+}
+.comandBtn {
+    width: 6rem;
+}
+button:hover {
+    cursor: pointer;
+    opacity: .8;
+}
+
+.secret-word {
+    display: flex;
+    margin: 2px;
+    gap: 2px;
+}
+
+.word {
+    width: 3rem;
+    height: 3rem;
+    background-color: beige;
+    padding: 1rem;
+}
+
+.revelated {
+    background-color: rgb(17, 175, 17);
+    color: aliceblue;
+}
+
+.restart {
+    background-color: rgb(240, 56, 56);
+    color: aliceblue;
+}
+
+@media (max-width: 540px) {
+    button {
+        width: 2rem;
+        height: 2rem;
+    }
+    .comandBtn {
+        width: 4rem;
+    }
+    .word {
+        width: 2rem;
+        height: 2rem;
+        padding: .4rem;
+    }
+}
