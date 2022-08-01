@@ -83,6 +83,7 @@ keyboardLetters.map((letters) => {
     playerWord = [];
     counterPlayer = 0;
     game = true;
+    cleanKeyboard();
     ahorcado.setAttribute('SRC', ahorcadoDraw[0])
   }
   
@@ -90,6 +91,7 @@ keyboardLetters.map((letters) => {
     if (secretWord.length != 0 && game == true) {
         const evento = event.target.id;
         checkKey(evento);
+        event.srcElement.classList.add('restart');
     } else {
         alert("Selecciona new word para iniciar")
     }
@@ -101,7 +103,20 @@ keyboardLetters.map((letters) => {
     playerWord = [];
     counterPlayer = 0;
     game = true;
+    cleanKeyboard();
     ahorcado.setAttribute('SRC', ahorcadoDraw[0])
+  }
+
+  const cleanKeyboard = () => {
+    for (let i = 0; i < 3; i++) {
+      // accede al tecladoo y a los primeros 3 ul
+      const arrayRowKeyboard = keyboard.children[i].children;
+      console.log(arrayRowKeyboard);
+      for (let i = 0; i < arrayRowKeyboard.length; i++) {
+      // esta ruta accesa al boton en cada elemento de la lista
+      arrayRowKeyboard[i].children[0].classList.remove('restart');
+      }
+    }
   }
 
   addEventListener('keyup', event => {
@@ -122,13 +137,14 @@ keyboardLetters.map((letters) => {
             }
         }
         if (playerWord.join() === secretWord.join()) {
+            game = false;
             setTimeout(() => alert("¡Felicidades Ganaste!"), 500 )
         } 
     } else if (counterPlayer < 7) {
         counterPlayer++;
         ahorcado.setAttribute('SRC', ahorcadoDraw[counterPlayer]);
     } else {
-        alert("Perdiste");
+        alert(`Perdiste la palabra era ${secretWord.join('')}`);
         game = false
     }
   }
