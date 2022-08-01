@@ -65,6 +65,8 @@ button:hover {
     display: flex;
     margin: 2px;
     gap: 2px;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .word {
