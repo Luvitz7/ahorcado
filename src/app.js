@@ -111,7 +111,6 @@ keyboardLetters.map((letters) => {
     for (let i = 0; i < 3; i++) {
       // accede al tecladoo y a los primeros 3 ul
       const arrayRowKeyboard = keyboard.children[i].children;
-      console.log(arrayRowKeyboard);
       for (let i = 0; i < arrayRowKeyboard.length; i++) {
       // esta ruta accesa al boton en cada elemento de la lista
       arrayRowKeyboard[i].children[0].classList.remove('restart');
